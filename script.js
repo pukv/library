@@ -23,11 +23,13 @@ function displayBooks() {
   library.forEach((book, index) => {
     const bookElement = document.createElement("div");
     bookElement.classList.add("book"); // added class to the newly created div in order to style it mroe easily
+    // insert div into the new divs
     bookElement.innerHTML = `
     <h2>${book.title}</h2>
-    Author: ${book.author}
-    Pages: ${book.pages}`;
+    <p>Author: ${book.author}</p>
+    <p>Pages: ${book.pages}</p>`;
 
+    // appending the created divs to the container
     LibraryContainer.appendChild(bookElement);
   });
 }
