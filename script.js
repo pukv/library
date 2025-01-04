@@ -15,12 +15,10 @@ function addBookToLibrary(title, author, pages) {
   displayBooks();
 }
 
-// create a function which loops through the library array and displays books
-
 function displayBooks() {
   const LibraryContainer = document.querySelector("#library-container");
   LibraryContainer.innerHTML = "";
-  library.forEach((book, index) => {
+  library.forEach(book => {
     const bookElement = document.createElement("div");
     bookElement.classList.add("book"); // added class to the newly created div in order to style it mroe easily
     // insert div into the new divs
