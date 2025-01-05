@@ -33,17 +33,11 @@ function displayBooks() {
     <h2>${book.title}</h2>
     <p>Author: ${book.author}</p>
     <p>Pages: ${book.pages}</p>
-    <button class="delete-book">Delete Book</button>
-    <br>
     <label>
-    <input type="radio" name="status" value="read">
-      Read
-    </label>
-    <br>
+    <input type="radio" name="status" value="read">Read</label>
     <label>
-    <input type="radio" name="status" value="unread">
-      Unread
-    </label>`;
+    <input type="radio" name="status" value="unread">Unread</label>
+    <button class="remove-book">Remove Book</button>`;
 
     // add removeBook functionality
     removeBook(bookElement, index);
@@ -75,7 +69,7 @@ addBook.addEventListener("click", e => {
 
 // remove book from the library
 function removeBook(bookElement, index) {
-  const removeBookBtn = bookElement.querySelector(".delete-book");
+  const removeBookBtn = bookElement.querySelector(".remove-book");
   removeBookBtn.addEventListener("click", () => {
     bookElement.remove();
     if (index > 1) library.splice(index, -1);
