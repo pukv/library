@@ -8,6 +8,40 @@
     <title>Library</title>
   </head>
   <body>
+      <button class="open-modal">Add Book</button>
     <div id="library-container"></div>
+    <dialog id="modal">
+      <form id="modal-form">
+        <label for="title"">Title:</label>
+        <p>
+          <input 
+          type="text" 
+          id="title" 
+          name="title" 
+          placeholder="The Godfather" 
+          required>
+        </p>
+        <label for="author">Author:</label>
+        <p>
+          <input 
+          type="text" 
+          name="author" 
+          id="author" 
+          placeholder="Mario Puzo" 
+          required>
+        </p>
+        <label for="pages">Number of pages</label>
+        <p>
+          <input 
+          type="number" 
+          id="pages" 
+          name="pages" 
+          placeholder="420" 
+          required>
+        </p>
+        <button type="submit" id="add-book-btn">Add Book</button>
+        <button class="close-modal-btn">Close</button>
+      </form>
+    </dialog>
   </body>
 </html>
