@@ -33,9 +33,19 @@ function displayBooks() {
     <h2>${book.title}</h2>
     <p>Author: ${book.author}</p>
     <p>Pages: ${book.pages}</p>
-    <button class="delete-book">Delete Book</button>`;
+    <button class="delete-book">Delete Book</button>
+    <br>
+    <label>
+    <input type="radio" name="status" value="read">
+      Read
+    </label>
+    <br>
+    <label>
+    <input type="radio" name="status" value="unread">
+      Unread
+    </label>`;
 
-    // add deleteBook functionality
+    // add removeBook functionality
     removeBook(bookElement, index);
 
     // append the created div to page
