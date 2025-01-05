@@ -1,10 +1,14 @@
-// Adding elements for the modal
+const library = [];
+
+// Adding modal elements to DOM
 const modal = document.querySelector("#modal");
 const openModalBtn = document.querySelector(".open-modal");
-const modalForm = document.querySelector(".modal-form");
-const deleteBookBtn = document.querySelectorAll(".delete-book");
 const closeModal = document.querySelector(".close-modal-btn");
-const library = [];
+
+const modalTitle = modal.querySelector("#title");
+const modalAuthor = modal.querySelector("#author");
+const modalPages = modal.querySelector("#pages");
+const addBook = modal.querySelector("#add-book-btn");
 
 function Book(title, author, pages) {
   this.title = title;
@@ -36,15 +40,23 @@ function displayBooks() {
   });
 }
 
-// Open the modal
+// Open modal
 openModalBtn.addEventListener("click", () => {
   modal.showModal();
 });
 
+// Close modal
+closeModal.addEventListener("click", () => {
+  modal.close();
+});
+
+// Test Data
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310);
 addBookToLibrary("1984", "George Orwell", 328);
 addBookToLibrary("Lord Of the Rings", "J.R.R Tolkien", 399);
 
-closeModal.addEventListener("click", () => {
+addBook.addEventListener("click", e => {
+  e.preventDefault();
+  addBookToLibrary(modalTitle.value, modalAuthor.value, modalPages.value);
   modal.close();
 });
