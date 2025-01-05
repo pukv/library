@@ -1,3 +1,9 @@
+// Adding elements for the modal
+const modal = document.querySelector("#modal");
+const openModalBtn = document.querySelector(".open-modal");
+const modalForm = document.querySelector(".modal-form");
+const deleteBookBtn = document.querySelectorAll(".delete-book");
+const closeModal = document.querySelector(".close-modal-btn");
 const library = [];
 
 function Book(title, author, pages) {
@@ -7,11 +13,8 @@ function Book(title, author, pages) {
 }
 
 function addBookToLibrary(title, author, pages) {
-  // create a new Book object
   const book = new Book(title, author, pages);
-  // add it to library
   library.push(book);
-  // call the displayBooks funciton
   displayBooks();
 }
 
@@ -20,18 +23,28 @@ function displayBooks() {
   LibraryContainer.innerHTML = "";
   library.forEach(book => {
     const bookElement = document.createElement("div");
-    bookElement.classList.add("book"); // added class to the newly created div in order to style it mroe easily
-    // insert div into the new divs
+    bookElement.classList.add("book"); // add class to style more easily
+
     bookElement.innerHTML = `
     <h2>${book.title}</h2>
     <p>Author: ${book.author}</p>
-    <p>Pages: ${book.pages}</p>`;
+    <p>Pages: ${book.pages}</p>
+    <button class="delete-book">Delete Book</button>`;
 
-    // appending the created divs to the container
+    // append the created div to page
     LibraryContainer.appendChild(bookElement);
   });
 }
 
+// Open the modal
+openModalBtn.addEventListener("click", () => {
+  modal.showModal();
+});
+
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310);
 addBookToLibrary("1984", "George Orwell", 328);
 addBookToLibrary("Lord Of the Rings", "J.R.R Tolkien", 399);
+
+closeModal.addEventListener("click", () => {
+  modal.close();
+});
