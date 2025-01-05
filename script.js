@@ -75,8 +75,3 @@ function removeBook(bookElement, index) {
     if (index > 1) library.splice(index, -1);
   });
 }
-
-// Test Data
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310);
-addBookToLibrary("1984", "George Orwell", 328);
-addBookToLibrary("Lord Of the Rings", "J.R.R Tolkien", 399);
