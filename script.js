@@ -25,7 +25,7 @@ function addBookToLibrary(title, author, pages) {
 function displayBooks() {
   const LibraryContainer = document.querySelector("#library-container");
   LibraryContainer.innerHTML = "";
-  library.forEach(book => {
+  library.forEach((book, index) => {
     const bookElement = document.createElement("div");
     bookElement.classList.add("book"); // add class to style more easily
 
@@ -35,6 +35,9 @@ function displayBooks() {
     <p>Pages: ${book.pages}</p>
     <button class="delete-book">Delete Book</button>`;
 
+    // add deleteBook functionality
+    removeBook(bookElement, index);
+
     // append the created div to page
     LibraryContainer.appendChild(bookElement);
   });
@@ -43,6 +46,9 @@ function displayBooks() {
 // Open modal
 openModalBtn.addEventListener("click", () => {
   modal.showModal();
+  modalTitle.value = "";
+  modalAuthor.value = "";
+  modalPages.value = "";
 });
 
 // Close modal
@@ -50,13 +56,23 @@ closeModal.addEventListener("click", () => {
   modal.close();
 });
 
-// Test Data
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310);
-addBookToLibrary("1984", "George Orwell", 328);
-addBookToLibrary("Lord Of the Rings", "J.R.R Tolkien", 399);
-
+// Save values from the form and store them in the addBookToLibrary function
 addBook.addEventListener("click", e => {
   e.preventDefault();
   addBookToLibrary(modalTitle.value, modalAuthor.value, modalPages.value);
   modal.close();
 });
+
+// remove book from the library
+function removeBook(bookElement, index) {
+  const removeBookBtn = bookElement.querySelector(".delete-book");
+  removeBookBtn.addEventListener("click", () => {
+    bookElement.remove();
+    if (index > 1) library.splice(index, -1);
+  });
+}
+
+// Test Data
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310);
+addBookToLibrary("1984", "George Orwell", 328);
+addBookToLibrary("Lord Of the Rings", "J.R.R Tolkien", 399);
